@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="ethRpc4j" default="deploy" basedir=".">
+
+	<property name="src" value="src" />
+	<property name="lib" value="lib" />
+	<property name="classes" value="target" />
+	<property name="bin" value="bin" />
+
+	<path id="ethRpc4j.classpath">
+		<pathelement location="bin" />
+		<fileset dir="${lib}">
+			<include name="**/*.jar"/>
+		</fileset>
+	</path>
+	
+	<target name="copy">		
+		<copy todir="${classes}/lib/">
+			<fileset dir="${lib}/">
+					<include name="**/*.jar" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<tstamp prefix="build.">
+	<format property="TimeSign" pattern="yyyyMMdd"/>
+	</tstamp>
+
+	<target name="build-sup.jar">
+			    <jar  jarfile="${classes}/lib/umpay_ethRpc4j_${build.TimeSign}.jar">
+				      <fileset dir="${classes}/bin">
+				      	<include name="**"/>
+				      </fileset>
+			    </jar>
+			</target>
+	
+		<target name="init">
+				<mkdir dir="${classes}"/>
+				<mkdir dir="${classes}/bin"/>
+				<mkdir dir="${classes}/lib"/>
+				<mkdir dir="${classes}/log"/>
+		</target>
+
+	<target name="clean">
+		<delete dir="${classes}" />
+	</target>
+
+	<target name="compile">
+		<javac destdir="${classes}/bin" debug="true" encoding="UTF-8">
+			<src path="${src}" />
+			<classpath refid="ethRpc4j.classpath" />
+			<exclude name="**/CVS/**,**/.svn/**"/>
+		</javac>
+	</target>
+
+	<target name="build" depends="clean,init,copy,compile,build-sup.jar">
+
+	</target>
+
+	<target name="deploy" depends="build">
+	<!--	
+	<target name="deploy" depends="build">
+	-->
+	<delete dir="${classes}/bin" />
+	</target>
+	
+
+</project>

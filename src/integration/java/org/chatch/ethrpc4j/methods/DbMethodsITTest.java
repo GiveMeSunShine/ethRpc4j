@@ -1,0 +1,49 @@
+package org.chatch.ethrpc4j.methods;
+
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.*;
+
+import org.junit.BeforeClass;
+import org.junit.Ignore;
+import org.junit.Test;
+
+import com.umpay.ethrpc4j.EthereumClient;
+import com.umpay.ethrpc4j.databind.Converters;
+import com.umpay.ethrpc4j.methods.DbMethods;
+import com.umpay.ethrpc4j.rpc.HttpRpcProvider;
+import com.umpay.ethrpc4j.rpc.RpcProvider;
+
+public class DbMethodsITTest {
+
+	final static String DB_NAME = "db";
+
+	static DbMethods db;
+
+	@BeforeClass
+	public static void setUpOnce() throws java.net.MalformedURLException {
+		RpcProvider provider = new HttpRpcProvider();
+		EthereumClient client = new EthereumClient(provider);
+		db = client.db();
+	}
+
+	@Test
+	@Ignore // don't know how to setup db or if db exists?
+	public void testHex() throws Exception {
+		final String KEY = "akey";
+		final byte[] DATA = Converters.stringToBytes("00aaff");
+		Boolean putHexRsp = db.putHex(DB_NAME, KEY, DATA);
+		assertTrue(putHexRsp);
+		assertThat(db.getHex(DB_NAME, KEY), equalTo(DATA));
+	}
+
+	@Test
+	@Ignore // don't know how to setup db or if db exists?
+	public void testString() throws Exception {
+		final String KEY = "akey";
+		final String VALUE = "astring";
+		Boolean putStringRsp = db.putString(DB_NAME, KEY, VALUE);
+		assertTrue(putStringRsp);
+		assertThat(db.getString(DB_NAME, KEY), equalTo(VALUE));
+	}
+
+}
