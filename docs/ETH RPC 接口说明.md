@@ -10,7 +10,7 @@
 
 请求结果：
 
-```
+```json
 {
   "id":1,
   "jsonrpc": "2.0",
@@ -27,7 +27,7 @@
 - `DATA` - 20字节，要检查余额的地址
 - `QUANTITY|TAG` - 整数块编号，或者字符串"latest", "earliest" 或 "pending"
 
-```
+```josn
 params: [
    '0x407d73d8a49eeb85d32cf465507dd71d507100c1',
    'latest'
@@ -42,13 +42,13 @@ params: [
 
 请求：
 
-```
+```json
 $ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0x407d73d8a49eeb85d32cf465507dd71d507100c1", "latest"],"id":1}'
 ```
 
 响应：
 
-```
+```json
 {
   "id":1,
   "jsonrpc": "2.0",
@@ -65,7 +65,7 @@ $ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0x4
 - `DATA` - 20字节，地址
 - `QUANTITY|TAG` - 整数块编号，或字符串"latest"、"earliest"或"pending"
 
-```
+```json
 params: [
    '0x407d73d8a49eeb85d32cf465507dd71d507100c1',
    'latest' // state at the latest block
@@ -80,13 +80,13 @@ params: [
 
 请求：
 
-```
+```bash
 curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getTransactionCount","params":["0x407d73d8a49eeb85d32cf465507dd71d507100c1","latest"],"id":1}'
 ```
 
 响应：
 
-```
+```json
 {
   "id":1,
   "jsonrpc": "2.0",
@@ -102,7 +102,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getTransactionCount","params
 
 `DATA` - 32字节，块哈希
 
-```
+```json
 params: [
    '0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238'
 ]
@@ -116,13 +116,13 @@ params: [
 
 请求：
 
-```
+```bash
 curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBlockTransactionCountByHash","params":["0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"],"id":1}'
 ```
 
 响应：
 
-```
+```json
 {
   "id":1,
   "jsonrpc": "2.0",
@@ -138,7 +138,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBlockTransactionCountByHa
 
 `QUANTITY|TAG` - 整数块编号，或字符串"earliest"、"latest"或"pending"
 
-```
+```json
 params: [
    '0xe8', // 232
 ]
@@ -152,13 +152,13 @@ params: [
 
 请求：
 
-```
+```bash
 curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBlockTransactionCountByNumber","params":["0xe8"],"id":1}'
 ```
 
 响应：
 
-```
+```josn
 {
   "id":1,
   "jsonrpc": "2.0",
@@ -175,7 +175,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBlockTransactionCountByNu
 - `DATA`, 32字节 - 块哈希
 - `Boolean` - 为true时返回完整的交易对象，否则仅返回交易哈希
 
-```
+```json
 params: [
    '0xe670ec64341771606e55d6b4ca35a1a6b75ee3d5145a99d05921026d1527331',
    true
@@ -210,13 +210,13 @@ params: [
 
 请求：
 
-```
+```bash
 curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBlockByHash","params":["0xe670ec64341771606e55d6b4ca35a1a6b75ee3d5145a99d05921026d1527331", true],"id":1}'
 ```
 
 响应：
 
-```
+```json
 {
 "id":1,
 "jsonrpc":"2.0",
@@ -252,7 +252,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBlockByHash","params":["0
 - `QUANTITY|TAG` - 整数块编号，或字符串"earliest"、"latest" 或"pending"
 - `Boolean` - 为true时返回完整的交易对象，否则仅返回交易哈希
 
-```
+```json
 params: [
    '0x1b4', // 436
    true
@@ -267,13 +267,13 @@ params: [
 
 请求：
 
-```
+```bash
 curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["0x1b4", true],"id":1}'
 ```
 
 响应：
 
-```
+```json
 {
 "id":1,
 "jsonrpc":"2.0",
@@ -308,7 +308,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":[
 
 `DATA`, 32 字节 - 交易哈希
 
-```
+```json
 params: [
    "0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"
 ]
@@ -334,13 +334,13 @@ params: [
 
 请求：
 
-```
+```bash
 curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getTransactionByHash","params":["0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"],"id":1}'
 ```
 
 响应：
 
-```
+```json
 {
 "id":1,
 "jsonrpc":"2.0",
